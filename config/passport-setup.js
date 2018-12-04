@@ -36,7 +36,8 @@ passport.use(
                 //if not created in our DB -> create
                 new User({
                     username: profile.displayName,
-                    googleID: profile.id
+                    googleID: profile.id,
+                    thumbnail: profile._json.image.url
                 }).save().then((newUser) => {
                     console.log('new user created: ' + newUser);
                     // move to serializeUser <-
