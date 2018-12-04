@@ -18,9 +18,21 @@ router.get('/google', passport.authenticate('google', {
     scope: ['profile']
 }));
 
+// auth with facebook 
+router.get('/facebook', passport.authenticate('facebook', {
+    scope: ['public_profile']
+}));
+
 //callback routes for google to redirect
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
     // res.send(req.user);
     res.redirect('/profile/')
 });
+
+//callback routes for google to redirect
+router.get('/facebook/redirect', passport.authenticate('facebook'), (req, res) => {
+    // res.send(req.user);
+    res.redirect('/profile/')
+});
+
 module.exports = router;
